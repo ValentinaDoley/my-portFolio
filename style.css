@@ -7,10 +7,10 @@
   font-family: "Poppins";
 }
 :root {
-  --bg-color: #080808;
-  --second-bg-color: #101010;
+  --bg-color: #2d3a52;
+  --second-bg-color: #ff9dcb;
   --text-color: white;
-  --main-color: #ea580c;
+  --main-color: #e7bcff;
 }
 html {
   font-size: 60%;
@@ -51,8 +51,8 @@ body {
 span{
   background: linear-gradient(
     270deg,
-    #DF8908 10%,
-    #ff1d15 100%
+    #6a95d4 10%,
+    #ffffff 100%
   );
   background-clip: text;
   color: transparent;
@@ -75,8 +75,8 @@ span{
   border-radius: 3rem;
   background: linear-gradient(
     270deg,
-    #DF8908 10%,
-    #ff1d15 100%
+    #6a95d4 10%,
+    #25072c 100%
   );
   letter-spacing: 1px;
   cursor: pointer;
@@ -88,6 +88,7 @@ span{
 .gradient-btn:hover{
   transform: scale(1.05);
 }
+
 section{
   min-height: 100vh;
   padding: 10rem 15%;
@@ -107,7 +108,7 @@ section{
 .home-content h1{
   font-size: 8rem;
   font-weight: 700;
-  margin-bottom: 1.5rem;
+  margin-top: 1.5rem;
   line-height: 1;
 }
 .home-content h3{
@@ -122,11 +123,63 @@ section{
 .home-img img{
   width: 32vw;
   border-radius: 50%;
-  box-shadow: 0 0 25px var(--main-colour);
+  box-shadow: 0 0 20px var(--main-color);
   transition: 0.4s ease-in-out;
 }
 .home-img img:hover{
-  box-shadow: 0 0 25px var(--main-colour),
-              0 0 50px var(--main-colour);
-              0 0 100px var(--msin-colour);
+  box-shadow: 0 0 25px var(--main-color),
+              0 0 0px var(--main-color),
+              0 0 50px var(--main-color);
+}
+.social-icons a{
+  display: inline-flex; /*to stay side by side*/
+  justify-content: center; /*to center the icons*/
+  align-items: center;
+  font-size: 3rem;
+  padding: 1rem;
+  background: transparent;
+  border: 2px solid var(--main-color);
+  border-radius: 50%;
+  color: var(--main-color);
+  margin: 3rem 0.5rem;
+  transition: 0.3s ease-in-out;
+}
+.social-icons a:hover{
+  color:var(--text-color);
+  background-color: var(--main-color);
+  transform: scale(1.2)translateY(-5px); /* hover size and movement upwards y direction*/
+  box-shadow: 0 0 25px var(--main-color);
+}
+.btn-group{
+  display: flex;
+  gap: 1.5rem;
+}
+.btn{
+  display: inline-block;
+  padding: 1rem 2rem;
+  background-color: var(--main-color);
+  box-shadow: 0 0 25px var(--main-color);
+  border-radius: 3rem;
+  font-size: 1.8rem;
+  color: black;
+  border: 2px solid transparent;
+  font-weight: 600;
+  transition: 0.3s ease-in-out;
+}
+.btn:hover{
+  transform: scale(1.05);
+  box-shadow: 0 0 25px var(--main-color),
+              0 0 50px var(--main-color);
+}
+
+.btn-group a:nth-of-type(2){
+  background-color: black;
+  color: var(--main-color);
+  border: 2px solid var(--main-color)
+  box-shadow: 0 0 25px var(--main-color);
+}
+.btn-group a:nth-of-type(2):hover{
+  box-shadow: 0 0 25px var(--main-color);
+  background-color: var(--main-color);
+  color: black;
 }
