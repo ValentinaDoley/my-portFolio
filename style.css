@@ -7,10 +7,10 @@
   font-family: "Poppins";
 }
 :root {
-  --bg-color: #dfafff;
-  --second-bg-color: #ffd3f0;
+  --bg-color: #fffdfa;
+  --second-bg-color: #d47f00a6;
   --text-color: white;
-  --main-color: #d079ffaf;
+  --main-color: #3a3123;
 }
 html {
   font-size: 60%;
@@ -27,12 +27,31 @@ body {
     top: 0;
     left: 0;
     padding: 4rem 15%;
-    background-color: #e9bfff80;
+    background: linear-gradient(
+      270deg,
+      var(--second-bg-color),
+      var(--main-color),
+      #e99d2ba8,
+      #5f4f08
+    );
+    background-size: 400% 400%;
+    animation: gradientMove 10s ease infinite;
     backdrop-filter: blur(10px); /* for glass effect*/
     display: flex;
     justify-content: space-between;
     align-items: center;
     z-index: 1000;
+}
+@keyframes gradientMove {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 #menu-icon{
   font-size: 3rem;
@@ -43,17 +62,21 @@ body {
   font-size: 3rem;
   color: var(--text-color);
   font-weight: 800;
+  text-shadow: 0 0 10px #e99d2ba8,
+               0 0 0px #e99d2ba8
+               0 0 0px #e99d2ba8,
+               0 0 10px #e99d2ba8;
   cursor: pointer;
   transition: 0.1s ease-in-out;
 }
 .logo:hover{
-  transform: scale(1.2);
+  transform: scale(1.1);
 }
 span{
   background: linear-gradient(
     270deg,
-    #49136db4 10%,
-    #fb92ff 100%
+    #eecd60 10%,
+    var(--main-color) 100%
   );
   background-clip: text;
   color: transparent;
@@ -76,13 +99,13 @@ span{
   border-radius: 3rem;
   background: linear-gradient(
     270deg,
-    #49136db4 10%,
-    #fb92ff 100%
+    #ffd28e 10%,
+    var(--main-color) 100%
   );
   letter-spacing: 1px;
   cursor: pointer;
   transition: 0.3s ease-in-out;
-  color: white;
+  color: var(--text-color);
   border: none;
   text-wrap: nowrap;
 }
@@ -123,15 +146,19 @@ section{
 }
 .home-img img{
   width: 32vw;
-  background-color: #dd9eff;
   border-radius: 50%;
-  box-shadow: 0 0 20px var(--main-color);
+  background-color: #fcdda4;
+  box-shadow: 0 0 20px var(--second-bg-color),
+              0 0 30px var(--second-bg-color);
   transition: 0.4s ease-in-out;
 }
+
 .home-img img:hover{
-  box-shadow: 0 0 25px #e9c1ffe3,
-              0 0 50px #d079ffaf,
-              0 0 50px #d079ffaf;
+box-shadow: 0 0 35px #ffc532,
+             0 0 50px #ffec7f,
+             0 0 60px #ffe8f2,
+             0 0 50px #fcdda4;
+              
 }
 .social-icons a{
   display: inline-flex; /*to stay side by side*/
@@ -193,18 +220,19 @@ section{
   background: var(--second-bg-color);
 }
 .about-img img{
-  background-color: #fdc3de;
+  background-color: var(--bg-color);
+  box-shadow: 0 0 20px var(--second-bg-color),
+              0 0 30px var(--second-bg-color);
   width: 32vw;
   border-radius: 50%;
-  box-shadow: 0 0 25px #ff9dcb;
   transition: 0.4s ease-in-out;
 }
 .about-img img:hover{
- box-shadow: 0 0 25px #fff1f7,
-             0 0 50px #ffc6e0,
+ box-shadow: 0 0 35px #ffc532,
+             0 0 50px #ffec7f,
              0 0 60px #ffe8f2,
-             0 0 50px #ff9dcb;
-             /* 0 0 5px #ff91c4; */
+             0 0 50px #fcdda4,
+             0 0 5px #ffc478;
 }
 .about-content h2{
   font-size: 7rem;
@@ -258,7 +286,7 @@ section{
 }
 .service-box:hover{
   background: var(--second-bg-color);
-  color: rgb(73, 53, 73);
+  color: var(--bg-color);
   border: 5px solid var(--main-color);
   transform: scale(1.03);
 }
@@ -389,7 +417,7 @@ section{
     display: block;
   }
   .navbar{
-    position: absolute;
+    position: absolute; /*removed from the normal document flow*/
     top: 100%;
     right: 0;
     width: 50%;
@@ -398,9 +426,10 @@ section{
     border-bottom-left-radius: 2rem;
     border-left: 2px solid var(--main-color);
     border-bottom: 2px solid var(--main-color);
+    display: none;
   }
   .navbar a{
-    display: block;
+    display: block; /*To make hidden sub-menus visible when triggered*/
     font-size: 2rem;
     margin: 3rem 0;
     color: var(--text-color);
@@ -421,7 +450,7 @@ section{
     text-align: center;
   }
   .home-img img{
-    widht: 56vw;
+    width: 56vw;
   }
   .about{
     flex-direction: column-reverse;
