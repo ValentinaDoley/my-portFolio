@@ -8,8 +8,8 @@
 }
 :root {
   --bg-color: #fffdfa;
-  --second-bg-color: #d47f00a6;
-  --text-color: white;
+  --second-bg-color: #ffa51fa6;
+  --text-color: rgb(209, 165, 71);
   --main-color: #3a3123;
 }
 html {
@@ -60,7 +60,7 @@ body {
 }
 .logo{
   font-size: 3rem;
-  color: var(--text-color);
+  color: var(--bg-color);
   font-weight: 800;
   text-shadow: 0 0 10px #e99d2ba8,
                0 0 0px #e99d2ba8
@@ -68,7 +68,7 @@ body {
                0 0 10px #e99d2ba8;
   cursor: pointer;
   transition: 0.1s ease-in-out;
-}
+} 
 .logo:hover{
   transform: scale(1.1);
 }
@@ -83,7 +83,7 @@ span{
 }
 .navbar a{
   font-size: 1.8rem;
-  color: var(--text-color);
+  color: var(--bg-color);
   margin-left: 4rem;
   font-weight: 500;
   transition: 0.3s ease-in-out;
@@ -240,6 +240,7 @@ box-shadow: 0 0 35px #ffc532,
 }
 .about-content p{
   font-size: 1.8rem;
+  color: var(--bg-color);
 }
 .about-content.btn{
   margin: 3rem 0; /*top and bottom space*/
@@ -269,9 +270,9 @@ box-shadow: 0 0 35px #ffc532,
 }
 .services-container{
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* to automatically fit*/
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* to automatically fit*/
   align-items: center;
-  gap: 2.5;
+  gap: 2.5rem;
 }
 .service-box{
   display: flex;
