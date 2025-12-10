@@ -356,6 +356,17 @@ box-shadow: 0 0 35px #ffc532,
 .project-card p{
   font-size: 1.6rem;
 }
+.project-1-img{
+  width: 100%;
+  aspect-ratio: 1/1;
+  overflow: hidden;
+}
+.project-1-img img{
+  width: 95%;
+  height: 72%;
+  aspect-ratio: 1/1;
+  object-fit: cover;
+}
 
 .contact{
   background-color: var(--bg-color);
