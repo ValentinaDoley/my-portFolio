@@ -17,7 +17,7 @@ allSections.forEach((section) => {
     gsap.from(section, {
         y: 50,
         opacity: 0,
-        duration: 1,
+        duration: 2,
         ease: "power2.out",
         scrollTrigger: {
             trigger: section,
@@ -25,4 +25,23 @@ allSections.forEach((section) => {
             toggleActions: "play reverse play reverse"
         }
     });
+});
+
+// about-me p hover effect
+const aboutContentP = document.querySelector('.about-content p');
+let currentAngle = 0;
+let animationId;
+
+function spin() {
+    currentAngle += 1.5; // controls speed
+    aboutContentP.style.transform = `rotate(${currentAngle}deg)`;
+    animationId = requestAnimationFrame(spin);
+};
+
+aboutContentP.addEventListener('mouseenter', () => {
+    spin(); // starts the animation
+});
+
+aboutContentP.addEventListener('mouseleave', () => {
+    cancelAnimationFrame(animationId); //stops where the cursor left
 });
