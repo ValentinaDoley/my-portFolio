@@ -8,7 +8,6 @@ menuIcon.onclick = () => {
     menuIcon.classList.toggle('bx-x')
     navbar.classList.toggle('active');
 }
-
 // Animation Code setup
 //This finds ever <section> and animates it when you scroll
 const allSections = document.querySelectorAll("section");
@@ -26,7 +25,6 @@ allSections.forEach((section) => {
         }
     });
 });
-
 // about-me p hover effect
 const aboutP = document.querySelector('.about-content p');
 
@@ -50,6 +48,29 @@ aboutP.addEventListener('mouseleave', () => {
     });
 });
 
+const logoAlive = document.querySelector('.logo');
+
+logoAlive.addEventListener('mouseenter', () => {
+    gsap.to(logoAlive, {
+        rotationY: 15,   // Tilts side-to-side
+        rotationX: -5,  //Tilts forward-backward
+        scale: 1.02,    // subtle zoom
+        duration: 0.6,
+        ease: "power2.out"  // power2.out is a smooth easing function
+    });
+});
+
+logoAlive.addEventListener('mouseleave', () => {
+    gsap.to(logoAlive, {
+        rotationY: 0,
+        rotationX: 0, // Resets tilt
+        scale: 1,    //Resets zoom
+        duration: 0.8,
+        ease: "elastic.out(1, 0.5)" //adds a cute little bounce when its resetting
+    });
+});
+
+// Thank-you modal logic for contact form
 const contactForm = document.querySelector('form');
 const modal = document.querySelector('#thanks-modal');
 const closeBtn = document.querySelector('.close-btn');
@@ -82,9 +103,6 @@ contactForm.onsubmit = async (e) => {
         console.log("Network error:", error)
     }
 };
-
-
-
 //Close Modal logic
 const closeModal = () => modal.style.display = 'none';
 closeBtn.onclick = closeModal;
