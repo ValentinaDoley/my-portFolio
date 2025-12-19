@@ -28,20 +28,68 @@ allSections.forEach((section) => {
 });
 
 // about-me p hover effect
-const aboutContentP = document.querySelector('.about-content p');
-let currentAngle = 0;
-let animationId;
+const aboutP = document.querySelector('.about-content p');
 
-function spin() {
-    currentAngle += 1.5; // controls speed
-    aboutContentP.style.transform = `rotate(${currentAngle}deg)`;
-    animationId = requestAnimationFrame(spin);
+aboutP.addEventListener('mouseenter', () => {
+    gsap.to(aboutP, {
+        rotationY: 15,   // Tilts side-to-side
+        rotationX: -5,  //Tilts forward-backward
+        scale: 1.02,    // subtle zoom
+        duration: 0.6,
+        ease: "power2.out"  // power2.out is a smooth easing function
+    });
+});
+
+aboutP.addEventListener('mouseleave', () => {
+    gsap.to(aboutP, {
+        rotationY: 0,
+        rotationX: 0, // Resets tilt
+        scale: 1,    //Resets zoom
+        duration: 0.8,
+        ease: "elastic.out(1, 0.5)" //adds a cute little bounce when its resetting
+    });
+});
+
+const contactForm = document.querySelector('form');
+const modal = document.querySelector('#thanks-modal');
+const closeBtn = document.querySelector('.close-btn');
+const modalBtn = document.querySelector('#modal-close-btn');
+
+contactForm.onsubmit = async (e) => {
+    e.preventDefault();  // Stops the page from redirecting/reloading
+
+    console.log("Form submission...")
+
+    const formData = new FormData(contactForm);
+
+    // Sends the data to Formspree in the background
+    try{
+    const response  = await fetch(contactForm.action, {
+        method: 'POST',
+        body: formData,
+        headers: {'Accept': 'application/json'}
+    });
+
+    if(response.ok) {
+        console.log("Formspree success!");
+        modal.style.display = 'flex';
+        contactForm.reset();
+    } else {
+        console.log("Formspree error. Status:")
+        alert("Oops! There was a problem submitting your form");
+    }
+    } catch (error) {
+        console.log("Network error:", error)
+    }
 };
 
-aboutContentP.addEventListener('mouseenter', () => {
-    spin(); // starts the animation
-});
 
-aboutContentP.addEventListener('mouseleave', () => {
-    cancelAnimationFrame(animationId); //stops where the cursor left
-});
+
+//Close Modal logic
+const closeModal = () => modal.style.display = 'none';
+closeBtn.onclick = closeModal;
+modalBtn.onclick = closeModal;
+window.onclick = (e) => {
+    if (e.target == modal)
+        closeModal();
+};
