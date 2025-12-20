@@ -36,7 +36,7 @@ body {
       #5f4f08
     );
     background-size: 400% 400%;
-    animation: gradientMove 10s ease infinite;
+    /* animation: gradientMove 10s ease infinite; */
     backdrop-filter: blur(10px); /* for glass effect*/
     display: flex;
     justify-content: space-between;
@@ -63,24 +63,17 @@ body {
   font-size: 3rem;
   color: var(--bg-color);
   font-weight: 800;
-  text-shadow: 0 0 10px #e99d2ba8,
-               0 0 0px #e99d2ba8
-               0 0 0px #e99d2ba8,
-               0 0 10px #e99d2ba8;
   cursor: pointer;
-  transition: 0.1s ease-in-out;
 } 
-.logo:hover{
-  transform: scale(1.1);
-}
 span{
   background: linear-gradient(
     270deg,
-    #eecd60 10%,
-    var(--main-color) 100%
-  );
+   var(--second-bg-color) 10%,
+    var(--main-color) 100%,
+    var(--third-bg-color) 100%);
   background-clip: text;
   color: transparent;
+  animation: gradientMove 10s ease infinite;
 }
 .navbar a{
   font-size: 1.8rem;
@@ -173,7 +166,7 @@ box-shadow: 0 0 20px var(--second-bg-color),
   background: transparent;
   border: 2px solid var(--third-bg-color);
   border-radius: 50%;
-  color: var(--third-bg-color);
+  color: var(--text-color);
   box-shadow: 0 0 5px var(--second-bg-color);
   margin: 3rem 0.5rem;
   transition: 0.3s ease-in-out;
@@ -248,7 +241,8 @@ box-shadow: 0 0 20px var(--second-bg-color),
 .about-content p{
   display: block;
   padding: 2em;
-  width: 500px;
+  width: 100%;
+  max-width: 500px;
   background-color: var(--bg-color);
   font-size: 1.8rem;
   color: var(--main-color);
@@ -257,18 +251,15 @@ box-shadow: 0 0 20px var(--second-bg-color),
   cursor: pointer;
   perspective: 1000px;
 }
-.about-content.btn{
-  margin: 3rem 0; /*top and bottom space*/
-}
 
 ::-webkit-scrollbar{
-  width: 20px;
+  width: 8px;
 }
 ::-webkit-scrollbar-thumb{
-  background-color: var(--main-color);
+  background-color: var(--second-bg-color);
 }
 ::-webkit-scrollbar-track{
-  background-color: var(--bg-color);
+  background-color: var(--main-color);
 }
 
 .heading{
