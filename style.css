@@ -327,7 +327,7 @@ box-shadow: 0 0 20px var(--second-bg-color),
 
 .projects-box{
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  grid-template-columns: minmax(350px, 1fr);
   place-items: center;
   gap: 3rem;
   row-gap: 5rem;
@@ -469,7 +469,7 @@ box-shadow: 0 0 20px var(--second-bg-color),
   margin-bottom: 2rem;
 }
 
-/*for responsiveness*/
+/*for responsiveness*/ 
 @media(max-width:1285px){
   #menu-icon{
     display: block;
@@ -525,11 +525,40 @@ box-shadow: 0 0 20px var(--second-bg-color),
     flex-direction: column;
   }
 }
-@media (max-width: 450px){
-  section {
-    padding: 5rem 5%;
+/* Specific adjustments for mobile screens */
+@media (max-width: 450px) {
+  /* 1. Force Header and Sections to align their side gaps */
+  .header, section {
+    padding-left: 5% !important;
+    padding-right: 5% !important;
   }
-  .project-box {
-    grid-template-columns: 1fr;
+
+  /* 2. Fix Section Spacing */
+  section {
+    padding-top: 5rem !important;
+    padding-bottom: 5rem !important;
+  }
+
+  /* 3. Fix the Projects Grid - This is why it wasn't centering */
+  .projects-box {
+    display: flex !important;      /* Switch to flex for easier centering */
+    flex-direction: column !important;
+    align-items: center !important; 
+    justify-content: center !important;
+    width: 100% !important;
+    gap: 3rem !important;
+  }
+
+  /* 4. Fix the Project Card sizing */
+  .project-card {
+    width: 100% !important;        /* Fill the space provided by the 5% padding */
+    max-width: 330px !important;   /* Prevent it from being wider than small phones */
+    margin: 0 auto !important;     /* Force perfect horizontal centering */
+  }
+
+  /* 5. Fix images inside cards so they don't push the card wider */
+  .project-card img {
+    max-width: 100% !important;
+    height: auto !important;
   }
 }
