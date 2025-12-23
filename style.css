@@ -525,40 +525,39 @@ box-shadow: 0 0 20px var(--second-bg-color),
     flex-direction: column;
   }
 }
-/* Specific adjustments for mobile screens */
-@media (max-width: 450px) {
-  /* 1. Force Header and Sections to align their side gaps */
+html, body {
+  overflow-x: hidden;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+@media (max-width: 450px){
+  /* 1. Reduce the side gaps so content's lopsideness is minimized */
   .header, section {
     padding-left: 5% !important;
     padding-right: 5% !important;
   }
-
-  /* 2. Fix Section Spacing */
   section {
     padding-top: 5rem !important;
     padding-bottom: 5rem !important;
+    width: 100%;
   }
 
-  /* 3. Fix the Projects Grid - This is why it wasn't centering */
   .projects-box {
-    display: flex !important;      /* Switch to flex for easier centering */
-    flex-direction: column !important;
-    align-items: center !important; 
-    justify-content: center !important;
-    width: 100% !important;
-    gap: 3rem !important;
+    display: flex !important; /* Flex is more suitable for single-column layouts */
+    flex-direction: column;
+    grid-template-columns: 1fr;
+    /* justify-items: center; */
+    align-items: center;
+    justify-content: center;
+    width: 100%;
   }
-
-  /* 4. Fix the Project Card sizing */
+  /*Ensures cards never exceed phone screen width*/
   .project-card {
-    width: 100% !important;        /* Fill the space provided by the 5% padding */
-    max-width: 330px !important;   /* Prevent it from being wider than small phones */
-    margin: 0 auto !important;     /* Force perfect horizontal centering */
-  }
-
-  /* 5. Fix images inside cards so they don't push the card wider */
-  .project-card img {
-    max-width: 100% !important;
-    height: auto !important;
+    width: 100% !important; /* Ensures the card fills the mobile screen width*/
+    max-width: 320px !important; /*keeps the card from becoming too wide on slightly larger phones */
+    margin: 0 auto !important; /* Sets the top and bottom margins to 0 and automatically calculates equal left and right margins*/
+    padding: 3rem 2rem;
   }
 }
